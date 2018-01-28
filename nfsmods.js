@@ -141,4 +141,4 @@ request(url, function (error, response, body) {
 });
 
 
-client.login('NDA3MTgwMTc1MzQ0NjY0NTg2.DU9vow.tK3drmdmUgS7ruLOq2SDclU1x_M');
+client.login(process.env.BOT_TOKEN);
