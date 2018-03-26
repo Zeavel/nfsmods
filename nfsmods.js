@@ -1,4 +1,3 @@
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const CC = require('./command_create.js');
@@ -79,6 +78,7 @@ var downname4 = downname3.replace(/[/]/, '')
 var link = "https://nfsmods.xyz/" + downlink
 var link2 = link.replace(/[ ]/g, "%20")
 var urlink = "https://nfsmods.xyz/" + userlink
+var name_archive = name + "(by: " + chel +').zip'
     const Discord = require('discord.js');
 
     const embed = new Discord.MessageEmbed()
@@ -90,13 +90,33 @@ var urlink = "https://nfsmods.xyz/" + userlink
       .setImage(img)
       .addField("by", "[**"+ chel +"**](" + urlink + ")", true)
       .addField("Uploaded at", "**" + up + "**", true)
-      .addField("Download", "[**" + test7 +"**](" + link2 + ")")
+     // .addField("Download", "[**" + test7 +"**](" + link2 + ")")
       //.addField("Server uptime","**" + uptime[1] + "**"))
       
 console.log(link2)
         message.channel.send({embed})
-     
-    }
+        var requestModule=require("request");
+
+        requestModule(link2).pipe(fs.createWriteStream(name_archive));
+        console.log("ok")
+        
+function prekol()
+{
+    message.channel.send({
+        files: [{
+          attachment: './' + name_archive,
+          name: name_archive
+        }]
+      })
+        .then(console.log)
+        .catch(console.error);
+}
+setTimeout(prekol, 2000)
+
+        
+        }
+        
+
   }})
   
 }
@@ -252,6 +272,7 @@ if(commandIs("search", message))
                     var link = "https://nfsmods.xyz/" + downlink
                     var link2 = link.replace(/[ ]/g, "%20")
                     var urlink = "https://nfsmods.xyz/" + userlink
+                    var name_archive = name + "(by: " + chel +').zip'
                         const Discord = require('discord.js');
                     
                         const embed = new Discord.MessageEmbed()
@@ -263,11 +284,28 @@ if(commandIs("search", message))
                           .setImage(img)
                           .addField("by", "[**"+ chel +"**](" + urlink + ")", true)
                           .addField("Uploaded at", "**" + up + "**", true)
-                          .addField("Download", "[**" + test7 +"**](" + link2 + ")")
+                         // .addField("Download", "[**" + test7 +"**](" + link2 + ")")
                           //.addField("Server uptime","**" + uptime[1] + "**"))
                           
                     console.log(link2)
                             message.channel.send({embed})
+                            var requestModule=require("request");
+
+        requestModule(link2).pipe(fs.createWriteStream(name_archive));
+        console.log("ok")
+        
+function prekol()
+{
+    message.channel.send({
+        files: [{
+          attachment: './' + name_archive,
+          name: name_archive
+        }]
+      })
+        .then(console.log)
+        .catch(console.error);
+}
+setTimeout(prekol, 3000)
                             fs.writeFileSync("./number.txt", "0")
                             fs.writeFileSync("./kolvo.txt", "0")
                             fs.writeFileSync("./urli.txt", "")
@@ -286,5 +324,4 @@ if(commandIs("search", message))
  
 }
 });
-
 client.login(process.env.BOT_TOKEN);
