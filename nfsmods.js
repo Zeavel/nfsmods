@@ -27,7 +27,7 @@ function hasRole(mem, role)
         return false;
     }
 }
-var vole = 1;
+var vole = 0.25;
 
 client.setInterval(function play()
 {
