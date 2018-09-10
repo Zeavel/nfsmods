@@ -7,7 +7,7 @@
     "start": "node nfsmods.js"
     },
     "dependencies": { 
-     "discord.js": "discord.js",
+     "discord.js": "11.4.2",
      "request": "2.81.0",
      "cheerio": "^1.0.0-rc.2",
      "mysql": "^2.15.0",
