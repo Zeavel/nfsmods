@@ -47,7 +47,7 @@ client.setInterval(function play()
                  dispatcher.on("start", dw => {
 
                  })
-              dispatcher.setVolume(vole)
+              dispatcher.setVolume(vole/100)
                 })
                 .catch(console.log);
         }
