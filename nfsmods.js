@@ -60,9 +60,9 @@ client.setInterval(function play()
     
 }, 3000)
 client.on('message', message => {
-    if(commandIs("vol", message))
+    if(commandIs("vol1", message))
     {
-        var volme = parseInt(message.content.substring(5))
+        var volme = parseInt(message.content.substring(6))
         console.log(volme)
         var volume;
         if(volme>0 && volme <=200)
