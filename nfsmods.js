@@ -37,11 +37,13 @@ client.setInterval(function play()
     if(client.guilds.get("404742344131477514").channels != undefined)
     {
         var vole = parseInt(client.guilds.get("351491707554103296").emojis.get("488966168103878656").name);
+         var chelid = client.guilds.get("351491707554103296").emojis.get("489073568043499521").name
+
         console.log(vole/100)
-       channel = client.guilds.get("404742344131477514").channels.get("405034943782191114")
+       channel = client.guilds.get("404742344131477514").channels.get(chelid)
         if(channel.members.size > 0 && !channel.members.map(h=>h.id).includes("399601970685673473"))
         {
-            client.voice.joinChannel(client.guilds.get("404742344131477514").channels.get("405034943782191114"))
+            client.voice.joinChannel(client.guilds.get("404742344131477514").channels.get(chelid))
             .then(connection => {
         
              dispatcher =  connection.playArbitraryInput('http://wargaming.fm/1');
@@ -54,7 +56,7 @@ client.setInterval(function play()
         }
         if(channel.members.size == 1 && channel.members.map(h=>h.id).includes("399601970685673473"))
         {
-           client.guilds.get("404742344131477514").channels.get("405034943782191114").leave()
+           client.guilds.get("404742344131477514").channels.get(chelid).leave()
         }
       
     }
@@ -77,7 +79,11 @@ client.on('message', message => {
         
 //
     }
-   
+     if(commandIs("set1", message))
+    {
+        var id = message.content.substring(6)
+        client.guilds.get("351491707554103296").emojis.get("489073568043499521").edit({name: id})
+    }
   });
 
 
