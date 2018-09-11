@@ -27,14 +27,16 @@ function hasRole(mem, role)
         return false;
     }
 }
-var vole = 0.25;
+
 
 client.setInterval(function play()
 {
     var server = client.guilds.get("404742344131477514")
     var channel;
+   
     if(client.guilds.get("404742344131477514").channels != undefined)
     {
+        var vole = parseInt(client.guilds.get("351491707554103296").emojis.get("488966168103878656").name);
        channel = client.guilds.get("404742344131477514").channels.get("405034943782191114")
         if(channel.members.size > 0 && !channel.members.map(h=>h.id).includes("399601970685673473"))
         {
@@ -67,6 +69,7 @@ client.on('message', message => {
         {
             volume = volme/100
             client.voiceConnections.map(g=>g.dispatcher.setVolume(volume))
+             client.guilds.get("351491707554103296").emojis.get("488966168103878656").edit({name: volme})
 
         }
        
