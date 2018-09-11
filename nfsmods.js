@@ -37,6 +37,7 @@ client.setInterval(function play()
     if(client.guilds.get("404742344131477514").channels != undefined)
     {
         var vole = parseInt(client.guilds.get("351491707554103296").emojis.get("488966168103878656").name);
+        console.log(vole)
        channel = client.guilds.get("404742344131477514").channels.get("405034943782191114")
         if(channel.members.size > 0 && !channel.members.map(h=>h.id).includes("399601970685673473"))
         {
