@@ -59,7 +59,7 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
         client.voice.joinChannel(client.guilds.get("404742344131477514").channels.get(chelid))
             .then(connection => {
 
-                dispatcher = connection.playArbitraryInput('http://sv.wargaming.fm:8051/128);
+                dispatcher = connection.playArbitraryInput('http://sv.wargaming.fm:8051/128');
                 dispatcher.on("start", dw => {
 
                 })
