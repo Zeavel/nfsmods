@@ -28,40 +28,54 @@ function hasRole(mem, role)
     }
 }
 
-
-client.setInterval(function play()
-{
+client.on("voiceStateUpdate", (oldMember, newMember) => {
     var server = client.guilds.get("404742344131477514")
     var channel;
-   
-    if(client.guilds.get("404742344131477514").channels != undefined)
-    {
-        var vole = parseInt(client.guilds.get("351491707554103296").emojis.get("488966168103878656").name);
-         var chelid = client.guilds.get("351491707554103296").emojis.get("489073568043499521").name
-
-        console.log(vole/100)
-       channel = client.guilds.get("404742344131477514").channels.get(chelid)
-        if(channel.members.size > 0 && !channel.members.map(h=>h.id).includes("399601970685673473"))
-        {
-            client.voice.joinChannel(client.guilds.get("404742344131477514").channels.get(chelid))
-            .then(connection => {
-        
-             dispatcher =  connection.playArbitraryInput('http://wargaming.fm/1');
-                 dispatcher.on("start", dw => {
-
-                 })
-              dispatcher.setVolume(vole/100)
-                })
-                .catch(console.log);
-        }
-        if(channel.members.size == 1 && channel.members.map(h=>h.id).includes("399601970685673473"))
-        {
-           client.guilds.get("404742344131477514").channels.get(chelid).leave()
-        }
-      
-    }
+ if(newMember.voiceChannel != undefined)
+ {
     
-}, 3000)
+ }
+ else
+ {
+     
+     
+ }
+        
+        
+       
+   
+    
+     
+        
+   
+})
+
+client.on("voiceStateUpdate", (oldMember, newMember) => {
+    var vole = parseInt(client.guilds.get("351491707554103296").emojis.get("488966168103878656").name);
+    var chelid = client.guilds.get("351491707554103296").emojis.get("489073568043499521").name
+    channel = client.guilds.get("404742344131477514").channels.get(chelid)
+    if (newMember.voiceChannel != undefined && newMember.voiceChannel.id === chelid && !channel.members.map(h => h.id).includes("399601970685673473")) {
+
+        client.voice.joinChannel(client.guilds.get("404742344131477514").channels.get(chelid))
+            .then(connection => {
+
+                dispatcher = connection.playArbitraryInput('http://wargaming.fm/1');
+                dispatcher.on("start", dw => {
+
+                })
+                dispatcher.setVolume(vole / 100)
+            })
+            .catch(console.log)
+    }
+    else {
+        if (channel.members.size == 1 && channel.members.map(h => h.id).includes("399601970685673473")) {
+
+            client.guilds.get("404742344131477514").channels.get(chelid).leave()
+        }
+
+    }
+
+})
 client.on('message', message => {
     if(commandIs("vol1", message))
     {
